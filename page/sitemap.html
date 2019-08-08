@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/sitemap.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
+    <title>沈剑洪的个人博客</title>
+</head>
+<body>
+    <div class="title">个人博客's SiteMap</div>
+    <div class="link"><a href="./index.html"><b>博客首页</b></a> >> 站点地图</div>
+    <div class = "blog_list" id = "blog_list">
+        <span>最新文章</span>
+        <ul>
+            <li v-for="blog in blogList"><a v-bind:href="'http://127.0.0.1:12306/blog_detail.html?blog_id='+blog.id">{{blog.title}}</a></li>
+        </ul>
+    </div>
+    <div class = "wrapper">
+        <div class = "top clear">
+            <span>搜索热点</span>
+            <a class = "change">换一换</a>
+        </div>
+        <div class = "foot">
+            <ul class = "show">
+                <li class = "tpl clear showitem">
+                    <span class = "number">1</span>
+                    <span class = "host_title">最受欢迎的编程语言之争</span>
+                    <span class = "mes"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="./js/sitemap.js"></script>
+</body>
+</html>

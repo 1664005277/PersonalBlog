@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>沈晓的个人博客</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
+</head>
+<body>
+    <header class = "header">
+        <div class="container">
+            <a class = "title" href="./index.html">我的个人博客 | 技术博客</a>
+            <ul class ="menu">
+                <li><a href="./index.html">首页</a></li>
+                <li><a href="./sitemap.html">地图</a></li>
+                <li><a href="./about.html">关于</a></li>
+                <li><a href="./guestbook.html">留言</a></li>
+            </ul>
+            <div class="search">
+                <input type="text" placeholder="输入关键词查找">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="con_left">
+            <div class = "every_day" id = "every_day">
+                <span>每日一句</span>
+                <p>{{content}}</p>
+            </div>
+            <div calss = "article_list" id = "article_list">
+                <div v-for='art in articleList' class="article">
+                    <a v-bind:href="art.link" class="article_title">{{art.title}}</a>
+                    <p class="article_content">
+                        {{art.content}}
+                    </p>
+                    <div class="article_foot">
+                        发布于<span>{{art.date}}</span>  | <span>浏览({{art.views}})</span> | <span>Tags: {{art.tags}}</span>
+                    </div>
+                </div>
+                <div class="page_tool">
+                    <ul>
+                        <li v-for="pageNum in pageNumList" v-on:click="jumpTo(pageNum.page)" v-bind:class="{now_page:(pageNum.text == page )}">{{pageNum.text}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="con_right">
+            <div class="right_moudle" id = "random_tags">
+                <div>随机标签云</div>
+                <a v-for="tag in tags" v-bind:href="'http://127.0.0.1:12306/index.html?tag=' + tag" v-bind:style="{color:randomColor(),fontSize:randomSize()}">{{tag}}</a>
+            </div>
+            <div class="right_moudle" id = "new_hot">
+                <div>最近热门</div>
+                <ul>
+                    <li v-for="temp in hostTitleList">
+                        <a v-bind:href = 'temp.link'>{{temp.title}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right_moudle" id = "new_comments">
+                <div>最新评论</div>
+                <ul>
+                    <li v-for="comment in commentList">
+                        <div>
+                            <span>{{comment.name}}</span>
+                            <span class="say_time">{{comment.data}}</span>
+                        </div>
+                        <p>{{comment.say}}</p>
+                    </li>                  
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <ul>
+            <li><a href="">c++</a></li>
+            <li><a href="">java</a></li>
+            <li><a href="">c</a></li>
+            <li><a href="">html</a></li>
+            <li><a href="">css</a></li>
+            <li><a href="">js</a></li>
+        </ul>
+        <p>版权所有，严禁侵权</p>
+    </footer>
+    <script src="./js/index.js"></script>
+    <script src="./js/base.js"></script>
+</body>
+</html>
